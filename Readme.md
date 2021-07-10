@@ -94,7 +94,7 @@ See the [Wiki](https://github.com/arnoGalvez/VkRuna/wiki).
 
 ## Samples
 
-![](images/samples/cubes-sample.png)
+![](images/samples/cubes-ui-sample.png)
 ![](images/samples/twist-sample.png)
 
 ## About The Project
