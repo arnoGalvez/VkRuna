@@ -1,6 +1,6 @@
 # VkRuna - A simple shader based VFX editor ✨
 
-![](images/swarm-sample.png)
+![](images/samples/swarm-sample.png)
 
 This VFX was generated using the compute, vertex and fragment shaders hereinafter:
 
@@ -90,16 +90,16 @@ cmake -S <path-to-source> -B <path-to-build> -G "Visual Studio 16 2019"
 
 ## Utilisation
 
-See the wiki.
+See the [Wiki](https://github.com/arnoGalvez/VkRuna/wiki).
 
 ## Samples
 
-![](images/cubes-sample.png)
-![](images/twist-sample.png)
+![](images/samples/cubes-sample.png)
+![](images/samples/twist-sample.png)
 
 ## About The Project
 
-This project is part of my peregrination through the world of explicit rendering API and real time rendering. My goal was to make a simple GPU based VFX system. I first set out to recreate one of the example from Unity's VFX graph, the [particle swarm](images/unity-swarm.png). Then, the renderer now being able to do simple VFX rendering, I moved onto making it a simple tool enabling real time modifications of the VFXs through UI exposed variables and on the fly shader recompiling.
+This project is part of my peregrination through the world of explicit rendering API and real time rendering. My goal was to make a simple GPU based VFX system. I first set out to recreate one of the example from Unity's VFX graph, the [particle swarm](images/samples/unity-swarm.png). Then, the renderer now being able to do simple VFX rendering, I moved onto making it a simple tool enabling real time modifications of the VFXs through UI exposed variables and on the fly shader recompiling.
 
 I layed the foundation of this project using Pawel Lapinski's [API without secrets](https://software.intel.com/content/www/us/en/develop/articles/api-without-secrets-introduction-to-vulkan-part-1.html) tutorials, and then moved on to Dustin Land's [Vulkan blog series](https://www.fasterthan.life/blog). With Pawel I learnt the basics of Vulkan, and with Dustin I learnt the process of integrating a Vulkan rendering backend. I used my knowledge from a previous internship at Unity to design the UX for the VFX tool itself. Building the foundations was tedious, but the catharsis of seing my first animated particles was quite worth it !
 
