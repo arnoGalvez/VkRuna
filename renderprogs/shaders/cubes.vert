@@ -6,14 +6,14 @@ layout (location = 0) out vec3 diffuse;
 
 vec4 VertexMain(Particle_t particle)
 {
-	const vec4 vertex = particle.scale * GetVertex();
+	const vec4 vertex =  GetVertex();
 	const float cubeLength = round(pow(GetCapacity(), 0.3333333));
 	const float scale = 3.0 / cubeLength;
 
 	mat4 TR = mat4(1.0);
 	SetTranslation(TR, scale * particle.position);
 
-	mat4 S = Scale(vec3(scale));
+	mat4 S = Scale(vec3(particle.scale * scale));
 	mat4 TRS = TR * S;
 
 	vec4 worldPos4 = TRS * vertex;

@@ -2,11 +2,6 @@
 #include "utils.glsl"
 #include "brianSharpeNoise.glsl"
 
-${beg
-	color color_1;
-	color color_2;
-end}
-
 void Init(inout Particle_t particle)
 {
 	const uint id = GetParticleID();
