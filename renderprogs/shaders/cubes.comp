@@ -1,0 +1,33 @@
+#include "math.glsl"
+#include "utils.glsl"
+#include "brianSharpeNoise.glsl"
+
+${beg
+	color color_1;
+	color color_2;
+end}
+
+void Init(inout Particle_t particle)
+{
+	const uint id = GetParticleID();
+	const int cubeLength = int(round(pow(GetCapacity(), 0.3333333)));
+	ivec3 pos = CubePosSeq(int(id), cubeLength);
+
+	particle.position = vec3(pos);
+	particle.scale = 1.0;
+}
+
+void Update(inout Particle_t particle)
+{	
+	const float cubeLength = round(pow(GetCapacity(), 0.3333333));
+	vec3 p = 2.0 * particle.position / cubeLength;
+	p += 0.1 * GetTime();
+	float noise = Perlin3D(p);
+
+	particle.scale = clamp(noise, 0.0, 1.0);
+	particle.scale = Warp(particle.scale, -5.0);
+
+	const vec2 unitRange = vec2(0.0, 1.0);
+	float h = MapRange(noise, vec2(0.28, 1.0), unitRange);
+	particle.diffuse = hsv2rgb( vec3(h, 0.9, 0.9) );
+}

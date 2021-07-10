@@ -1,0 +1,268 @@
+{
+    "value0": {
+        "m_capacity": 32768,
+        "m_spawnRate": 9999999.0,
+        "m_lifeMin": 9999999827968.0,
+        "m_lifeMax": 999999986991104.0,
+        "m_renderPrimitive": 1,
+        "m_userAttributesCount": 3,
+        "value0": {
+            "value0": 0,
+            "value1": 3,
+            "value2": {
+                "value0": 112,
+                "value1": 111,
+                "value2": 115,
+                "value3": 105,
+                "value4": 116,
+                "value5": 105,
+                "value6": 111,
+                "value7": 110,
+                "value8": 0,
+                "value9": 0,
+                "value10": 0,
+                "value11": 0,
+                "value12": 0,
+                "value13": 0,
+                "value14": 0,
+                "value15": 0,
+                "value16": 0,
+                "value17": 0,
+                "value18": 0,
+                "value19": 0,
+                "value20": 0,
+                "value21": 0,
+                "value22": 0,
+                "value23": 0,
+                "value24": 0,
+                "value25": 0,
+                "value26": 0,
+                "value27": 0,
+                "value28": 0,
+                "value29": 0,
+                "value30": 0,
+                "value31": 0,
+                "value32": 0,
+                "value33": 0,
+                "value34": 0,
+                "value35": 0,
+                "value36": 0,
+                "value37": 0,
+                "value38": 0,
+                "value39": 0,
+                "value40": 0,
+                "value41": 0,
+                "value42": 0,
+                "value43": 0,
+                "value44": 0,
+                "value45": 0,
+                "value46": 0,
+                "value47": 0,
+                "value48": 0,
+                "value49": 0,
+                "value50": 0,
+                "value51": 0,
+                "value52": 0,
+                "value53": 0,
+                "value54": 0,
+                "value55": 0,
+                "value56": 0,
+                "value57": 0,
+                "value58": 0,
+                "value59": 0,
+                "value60": 0,
+                "value61": 0
+            }
+        },
+        "value1": {
+            "value0": 0,
+            "value1": 1,
+            "value2": {
+                "value0": 115,
+                "value1": 99,
+                "value2": 97,
+                "value3": 108,
+                "value4": 101,
+                "value5": 0,
+                "value6": 0,
+                "value7": 0,
+                "value8": 0,
+                "value9": 0,
+                "value10": 0,
+                "value11": 0,
+                "value12": 0,
+                "value13": 0,
+                "value14": 0,
+                "value15": 0,
+                "value16": 0,
+                "value17": 0,
+                "value18": 0,
+                "value19": 0,
+                "value20": 0,
+                "value21": 0,
+                "value22": 0,
+                "value23": 0,
+                "value24": 0,
+                "value25": 0,
+                "value26": 0,
+                "value27": 0,
+                "value28": 0,
+                "value29": 0,
+                "value30": 0,
+                "value31": 0,
+                "value32": 0,
+                "value33": 0,
+                "value34": 0,
+                "value35": 0,
+                "value36": 0,
+                "value37": 0,
+                "value38": 0,
+                "value39": 0,
+                "value40": 0,
+                "value41": 0,
+                "value42": 0,
+                "value43": 0,
+                "value44": 0,
+                "value45": 0,
+                "value46": 0,
+                "value47": 0,
+                "value48": 0,
+                "value49": 0,
+                "value50": 0,
+                "value51": 0,
+                "value52": 0,
+                "value53": 0,
+                "value54": 0,
+                "value55": 0,
+                "value56": 0,
+                "value57": 0,
+                "value58": 0,
+                "value59": 0,
+                "value60": 0,
+                "value61": 0
+            }
+        },
+        "value2": {
+            "value0": 0,
+            "value1": 3,
+            "value2": {
+                "value0": 100,
+                "value1": 105,
+                "value2": 102,
+                "value3": 102,
+                "value4": 117,
+                "value5": 115,
+                "value6": 101,
+                "value7": 0,
+                "value8": 0,
+                "value9": 0,
+                "value10": 0,
+                "value11": 0,
+                "value12": 0,
+                "value13": 0,
+                "value14": 0,
+                "value15": 0,
+                "value16": 0,
+                "value17": 0,
+                "value18": 0,
+                "value19": 0,
+                "value20": 0,
+                "value21": 0,
+                "value22": 0,
+                "value23": 0,
+                "value24": 0,
+                "value25": 0,
+                "value26": 0,
+                "value27": 0,
+                "value28": 0,
+                "value29": 0,
+                "value30": 0,
+                "value31": 0,
+                "value32": 0,
+                "value33": 0,
+                "value34": 0,
+                "value35": 0,
+                "value36": 0,
+                "value37": 0,
+                "value38": 0,
+                "value39": 0,
+                "value40": 0,
+                "value41": 0,
+                "value42": 0,
+                "value43": 0,
+                "value44": 0,
+                "value45": 0,
+                "value46": 0,
+                "value47": 0,
+                "value48": 0,
+                "value49": 0,
+                "value50": 0,
+                "value51": 0,
+                "value52": 0,
+                "value53": 0,
+                "value54": 0,
+                "value55": 0,
+                "value56": 0,
+                "value57": 0,
+                "value58": 0,
+                "value59": 0,
+                "value60": 0,
+                "value61": 0
+            }
+        },
+        "*m_computePipeline": {
+            "shaders": {
+                "value0": {
+                    "ptr_wrapper": {
+                        "valid": 0
+                    }
+                },
+                "value1": {
+                    "ptr_wrapper": {
+                        "valid": 0
+                    }
+                },
+                "value2": {
+                    "ptr_wrapper": {
+                        "valid": 1,
+                        "data": {
+                            "name": "..\\shaders\\cubes.comp",
+                            "stage": 2
+                        }
+                    }
+                }
+            },
+            "state": 3569247846401,
+            "userVars": []
+        },
+        "*m_graphicsPipeline": {
+            "shaders": {
+                "value0": {
+                    "ptr_wrapper": {
+                        "valid": 1,
+                        "data": {
+                            "name": "..\\shaders\\cubes.vert",
+                            "stage": 0
+                        }
+                    }
+                },
+                "value1": {
+                    "ptr_wrapper": {
+                        "valid": 1,
+                        "data": {
+                            "name": "..\\shaders\\cubes.frag",
+                            "stage": 1
+                        }
+                    }
+                },
+                "value2": {
+                    "ptr_wrapper": {
+                        "valid": 0
+                    }
+                }
+            },
+            "state": 1370727907329,
+            "userVars": []
+        }
+    }
+}

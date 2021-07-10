@@ -1,0 +1,12 @@
+#include "utils.glsl"
+
+void Init(inout Particle_t particle)
+{
+	const uint id = GetParticleID();
+	const float z = 3.0 * (float(id) / (GetCapacity() - 1.0));
+	const vec3 pos  = vec3(0.0, 0.0, z);
+
+	particle.position = pos;
+}
+
+void Update(inout Particle_t particle) {}

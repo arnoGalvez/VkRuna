@@ -1,0 +1,279 @@
+{
+    "value0": {
+        "m_capacity": 1000000,
+        "m_spawnRate": 9999999.0,
+        "m_lifeMin": 3.0,
+        "m_lifeMax": 4.0,
+        "m_renderPrimitive": 0,
+        "m_userAttributesCount": 2,
+        "value0": {
+            "value0": 0,
+            "value1": 3,
+            "value2": {
+                "value0": 112,
+                "value1": 111,
+                "value2": 115,
+                "value3": 105,
+                "value4": 116,
+                "value5": 105,
+                "value6": 111,
+                "value7": 110,
+                "value8": 0,
+                "value9": 0,
+                "value10": 0,
+                "value11": 0,
+                "value12": 0,
+                "value13": 0,
+                "value14": 0,
+                "value15": 0,
+                "value16": 0,
+                "value17": 0,
+                "value18": 0,
+                "value19": 0,
+                "value20": 0,
+                "value21": 0,
+                "value22": 0,
+                "value23": 0,
+                "value24": 0,
+                "value25": 0,
+                "value26": 0,
+                "value27": 0,
+                "value28": 0,
+                "value29": 0,
+                "value30": 0,
+                "value31": 0,
+                "value32": 0,
+                "value33": 0,
+                "value34": 0,
+                "value35": 0,
+                "value36": 0,
+                "value37": 0,
+                "value38": 0,
+                "value39": 0,
+                "value40": 0,
+                "value41": 0,
+                "value42": 0,
+                "value43": 0,
+                "value44": 0,
+                "value45": 0,
+                "value46": 0,
+                "value47": 0,
+                "value48": 0,
+                "value49": 0,
+                "value50": 0,
+                "value51": 0,
+                "value52": 0,
+                "value53": 0,
+                "value54": 0,
+                "value55": 0,
+                "value56": 0,
+                "value57": 0,
+                "value58": 0,
+                "value59": 0,
+                "value60": 0,
+                "value61": 0
+            }
+        },
+        "value1": {
+            "value0": 0,
+            "value1": 3,
+            "value2": {
+                "value0": 118,
+                "value1": 101,
+                "value2": 108,
+                "value3": 111,
+                "value4": 99,
+                "value5": 105,
+                "value6": 116,
+                "value7": 121,
+                "value8": 0,
+                "value9": 0,
+                "value10": 0,
+                "value11": 0,
+                "value12": 0,
+                "value13": 0,
+                "value14": 0,
+                "value15": 0,
+                "value16": 0,
+                "value17": 0,
+                "value18": 0,
+                "value19": 0,
+                "value20": 0,
+                "value21": 0,
+                "value22": 0,
+                "value23": 0,
+                "value24": 0,
+                "value25": 0,
+                "value26": 0,
+                "value27": 0,
+                "value28": 0,
+                "value29": 0,
+                "value30": 0,
+                "value31": 0,
+                "value32": 0,
+                "value33": 0,
+                "value34": 0,
+                "value35": 0,
+                "value36": 0,
+                "value37": 0,
+                "value38": 0,
+                "value39": 0,
+                "value40": 0,
+                "value41": 0,
+                "value42": 0,
+                "value43": 0,
+                "value44": 0,
+                "value45": 0,
+                "value46": 0,
+                "value47": 0,
+                "value48": 0,
+                "value49": 0,
+                "value50": 0,
+                "value51": 0,
+                "value52": 0,
+                "value53": 0,
+                "value54": 0,
+                "value55": 0,
+                "value56": 0,
+                "value57": 0,
+                "value58": 0,
+                "value59": 0,
+                "value60": 0,
+                "value61": 0
+            }
+        },
+        "*m_computePipeline": {
+            "shaders": {
+                "value0": {
+                    "ptr_wrapper": {
+                        "valid": 0
+                    }
+                },
+                "value1": {
+                    "ptr_wrapper": {
+                        "valid": 0
+                    }
+                },
+                "value2": {
+                    "ptr_wrapper": {
+                        "valid": 1,
+                        "data": {
+                            "name": "..\\shaders\\swarm.comp",
+                            "stage": 2
+                        }
+                    }
+                }
+            },
+            "state": 1370224590849,
+            "userVars": [
+                {
+                    "type": 1,
+                    "key": "sphereScale",
+                    "count": 4,
+                    "value": [
+                        3.0,
+                        3.0,
+                        3.0,
+                        0.0
+                    ]
+                },
+                {
+                    "type": 1,
+                    "key": "velocityScale",
+                    "count": 4,
+                    "value": [
+                        1.0,
+                        1.0,
+                        1.0,
+                        0.0
+                    ]
+                },
+                {
+                    "type": 1,
+                    "key": "noiseAmplFreqPersLac",
+                    "count": 4,
+                    "value": [
+                        0.0,
+                        0.9100000262260437,
+                        0.5299999713897705,
+                        0.9100000262260437
+                    ]
+                }
+            ]
+        },
+        "*m_graphicsPipeline": {
+            "shaders": {
+                "value0": {
+                    "ptr_wrapper": {
+                        "valid": 1,
+                        "data": {
+                            "name": "..\\shaders\\swarm.vert",
+                            "stage": 0
+                        }
+                    }
+                },
+                "value1": {
+                    "ptr_wrapper": {
+                        "valid": 1,
+                        "data": {
+                            "name": "..\\shaders\\swarm.frag",
+                            "stage": 1
+                        }
+                    }
+                },
+                "value2": {
+                    "ptr_wrapper": {
+                        "valid": 0
+                    }
+                }
+            },
+            "state": 270712963105,
+            "userVars": [
+                {
+                    "type": 1,
+                    "key": "scale",
+                    "count": 4,
+                    "value": [
+                        0.25,
+                        0.25,
+                        0.02500000037252903,
+                        0.0
+                    ]
+                },
+                {
+                    "type": 1,
+                    "key": "warpT",
+                    "count": 4,
+                    "value": [
+                        0.6100000143051148,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                {
+                    "type": 3,
+                    "key": "colorBeg",
+                    "count": 4,
+                    "value": [
+                        0.0,
+                        0.0265743937343359,
+                        0.07058823853731156,
+                        0.0
+                    ]
+                },
+                {
+                    "type": 3,
+                    "key": "colorEnd",
+                    "count": 4,
+                    "value": [
+                        0.0235294122248888,
+                        0.0011072664055973292,
+                        0.0,
+                        0.0
+                    ]
+                }
+            ]
+        }
+    }
+}

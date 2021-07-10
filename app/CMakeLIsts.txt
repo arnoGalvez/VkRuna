@@ -1,0 +1,62 @@
+# Copyright (c) 2021 Arno Galvez
+
+### Libraries
+set(SOURCE_FILES
+        wndproc.cpp
+        #../tracy/TracyClient.cpp
+        )
+
+add_library(app_lib STATIC ${SOURCE_FILES})
+target_include_directories(app_lib PRIVATE ${PROJECT_SOURCE_DIR})
+target_compile_features(app_lib PUBLIC cxx_std_11)
+
+### Compilation
+add_executable(${APP_NAME} ${OS} main.cpp)
+target_include_directories(
+        ${APP_NAME}
+        PRIVATE
+        ${PROJECT_SOURCE_DIR}
+        PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+target_link_libraries(
+        ${APP_NAME}
+        PRIVATE
+        app_lib
+        external_lib
+		game_lib
+        platform_lib
+        render_lib
+        rnLib_lib		
+        ui_lib
+)
+
+set(EXE_DIR ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>)
+
+add_custom_target(copy_dependencies ALL
+    DEPENDS
+        ${EXE_DIR}/shaderGen
+        ${EXE_DIR}/glsl/lib
+        ${EXE_DIR}/font
+)
+
+add_custom_command(TARGET copy_dependencies POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/renderer/shaderGen
+        ${EXE_DIR}/shaderGen
+
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/renderprogs/lib
+        ${EXE_DIR}/glsl/lib
+
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/external/font
+        ${EXE_DIR}/font
+
+    COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_SOURCE_DIR}/external/bin/glslc.exe
+        ${EXE_DIR}/bin/glslc.exe
+)
+
+add_dependencies(${APP_NAME} copy_dependencies)

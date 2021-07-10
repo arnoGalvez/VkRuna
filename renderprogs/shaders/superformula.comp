@@ -1,0 +1,52 @@
+// https://en.wikipedia.org/wiki/Superformula
+
+const float PI = 3.14159;
+
+${beg 
+	vec4 parameters;
+	vec4 scale;
+end}
+
+void Superformula(inout Particle_t particle)
+{
+	const int id = int(GetParticleID());
+	const float capacity = GetCapacity();
+
+	int squareLen = int(sqrt(capacity));
+	const int i = id % squareLen;
+	const int j = id / squareLen;
+	const float invSquareLen = 1.0 / float(squareLen);
+	const float u = mix(-PI, PI, float(i) * invSquareLen);
+	const float v = mix(-PI/2.0, PI/2.0,  float(j) * invSquareLen);
+
+	const float a = 1.0;
+	const float b = 1.0;
+	const float m = parameters.x;
+	const float n1 = parameters.y;
+	// const float n1 = sin(1.5 * GetTime());
+	const float n2 = parameters.z;
+	const float n3 = parameters.w;
+	float r1 = pow(abs( (cos(m * u / 4.0)) / a), n2) + pow(abs( (sin(m * u / 4.0)) / b), n3);
+	r1 = pow(r1, -1.0 / n1);
+	float r2 = pow(abs( (cos(m * v / 4.0)) / a), n2) + pow(abs( (sin(m * v / 4.0)) / b), n3);
+	r2 = pow(r1, -1.0 / n1);
+
+	// r1 = 1.0;
+	// r2 = 1.0;
+
+	particle.position.x = r1 * cos(u) * r2 * cos(v);
+	particle.position.y = r1 * sin(u) * r2 * cos(v);
+	particle.position.z = r2 * sin(v);
+
+	particle.position *= scale.xyz;
+}
+
+void Init(inout Particle_t particle)
+{
+	Superformula(particle);
+}
+
+void Update(inout Particle_t particle)
+{
+	Superformula(particle);
+}

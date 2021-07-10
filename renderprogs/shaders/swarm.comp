@@ -1,0 +1,24 @@
+#include "noise.glsl"
+#include "utils.glsl"
+
+${beg
+	vec4 sphereScale;
+	vec4 velocityScale;
+	vec4 noiseAmplFreqPersLac;
+end}
+
+void Init(inout Particle_t particle)
+{
+	const uint id = GetParticleID();
+	const float cubeLength = ceil( pow(GetCapacity(), 0.333333) );
+	const vec3 noiseParams = vec3( CubePosSeq( int(id), int(cubeLength) ) ); 
+
+	particle.position = sphereScale.xyz * normalize( bccNoiseClassic( noiseParams / (cubeLength * 0.4) + vec3(1.0) ).xyz );
+	particle.velocity = vec3(0.0);
+}
+
+void Update(inout Particle_t updatedParticle)
+{	
+	updatedParticle.velocity = velocityScale.xyz * CurlNoise(updatedParticle.position, 6, noiseAmplFreqPersLac.y, noiseAmplFreqPersLac.z, noiseAmplFreqPersLac.w);
+	updatedParticle.position = updatedParticle.position + GetDeltaFrame() * updatedParticle.velocity;
+}
