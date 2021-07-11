@@ -2,77 +2,10 @@
 
 ![](images/samples/swarm-sample.png)
 
-This VFX was generated using the compute, vertex and fragment shaders hereinafter:
+## Downloading the tool
 
-```glsl
-/////////////////////////// Compute Shader ///////////////////////////
-#include "noise.glsl"
-#include "utils.glsl"
+Get it frome [here](https://github.com/arnoGalvez/VkRuna/releases).
 
-${beg
-	vec4 sphereScale;
-	vec4 velocityScale;
-	vec4 noiseAmplFreqPersLac;
-end}
-
-void Init(inout Particle_t particle)
-{
-	const uint id = GetParticleID();
-	const float cubeLength = ceil( pow(GetCapacity(), 0.333333) );
-	const vec3 noiseParams = vec3( CubePosSeq( int(id), int(cubeLength) ) ); 
-
-	particle.position = sphereScale.xyz * normalize( bccNoiseClassic( noiseParams / (cubeLength * 0.4) + vec3(1.0) ).xyz );
-	particle.velocity = vec3(0.0);
-}
-
-void Update(inout Particle_t updatedParticle)
-{	
-	updatedParticle.velocity = velocityScale.xyz * CurlNoise(updatedParticle.position, 6, noiseAmplFreqPersLac.y, noiseAmplFreqPersLac.z, noiseAmplFreqPersLac.w);
-	updatedParticle.position = updatedParticle.position + GetDeltaFrame() * updatedParticle.velocity;
-}
-
-/////////////////////////// Vertex Shader ///////////////////////////
-#include "utils.glsl"
-#include "math.glsl"
-
-${beg
-	vec4 scale;
-	vec4 warpT;
-	color colorBeg;
-	color colorEnd;
-end}
-
-layout (location = 0) out vec4 color;
-
-vec4 VertexMain(Particle_t particle)
-{
-	mat4 rotation = AlignYAxis(globals.v, particle.position, particle.velocity);
-	vec4 vertex = GetVertex();
-	vec4 worldPosition = rotation * (GetLife() * vec4(vec3(scale), 1.0) * vertex);
-	
-	vec4 screenPosition = globals.p * globals.v * worldPosition;
-
-	color.rgb =  mix( colorEnd.rgb, colorBeg.rgb, Warp( GetLife() * (1.0 / GetLifeMax()), warpT.x ) );
-	color.a = 1.0;	
-
-	return screenPosition;
-}
-
-/////////////////////////// Fragment Shader ///////////////////////////
-layout (location = 0) in vec4 color;
-layout (location = 0) out vec4 fragColor;
-
-void FragmentMain()
-{
-	vec2 uv = 2.0 * GetUV() - vec2(1.0);
-	if (dot(uv, uv) > 1.0) {
-		discard;
-	}
-
-	fragColor = color;
-}
-
-```
 ## Building the tool
 
 ### Prerequisites
