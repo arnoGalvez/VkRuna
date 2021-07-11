@@ -46,7 +46,7 @@ static bool FileExplorerButton( const char *		  buttonName,
 	}
 
 	// display
-	if ( ImGuiFileDialog::Instance()->Display( explorerKey, ImGuiWindowFlags_NoCollapse, ImVec2( 500, 800 ) ) )
+	if ( ImGuiFileDialog::Instance()->Display( explorerKey, ImGuiWindowFlags_NoCollapse, ImVec2( 500, 400 ) ) )
 	{
 		// action if OK
 		if ( ImGuiFileDialog::Instance()->IsOk() )
