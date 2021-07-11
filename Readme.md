@@ -4,7 +4,7 @@
 
 ## Downloading the tool
 
-Get it frome [here](https://github.com/arnoGalvez/VkRuna/releases).
+Get it from [here](https://github.com/arnoGalvez/VkRuna/releases).
 
 ## Building the tool
 
