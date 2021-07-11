@@ -21,7 +21,7 @@ cmake -S <path-to-source> -B <path-to-build> -G "Visual Studio 16 2019"
 ```
 2. Open the project in your IDE, build and run !
 
-## Utilisation
+## User Manual
 
 See the [Wiki](https://github.com/arnoGalvez/VkRuna/wiki).
 
