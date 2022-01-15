@@ -14,8 +14,8 @@ namespace vkRuna
 {
 namespace render
 {
-static const VkDeviceSize g_deviceLocalBlocksCount = 128;
-static const VkDeviceSize g_hostVisibleBlocksCount = 256;
+static const VkDeviceSize g_deviceLocalBlocksCount = 256;
+static const VkDeviceSize g_hostVisibleBlocksCount = 512;
 
 static VulkanAllocator g_allocator;
 
