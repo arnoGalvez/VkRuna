@@ -333,9 +333,11 @@ bool VulkanBackend::StartFrame()
 	scissor.offset.y = 0;
 	scissor.extent	 = m_swapchainExtent;
 
-	VK_CHECK( vkResetCommandPool( g_vulkanContext.device,
-								  m_commandPool,
-								  0 ) ); // Careful with that call, no command buffer should be in use
+	VK_CHECK( vkResetCommandPool(
+		g_vulkanContext.device,
+		m_commandPool,
+		0 ) ); // Careful with that call, no command buffer should be in use. Wait this call goes against the fact that
+			   // there is an array of command buffers so that multiple buffers can be in flight !
 
 	VK_CHECK( vkBeginCommandBuffer( m_commandBuffers[ m_current ], &cmdBufferBeginInfo ) );
 
@@ -628,7 +630,11 @@ void VulkanBackend::PickPhysicalDevice()
 
 		gpu.device = physicalDevices[ i ];
 
-		vkGetPhysicalDeviceProperties( gpu.device, &gpu.props );
+		vkGetPhysicalDeviceProperties( gpu.device, &gpu.properties );
+		/*	gpu.properties3.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES;
+			gpu.properties2.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2;*/
+		gpu.properties2.pNext = reinterpret_cast< void * >( &gpu.properties3 );
+		vkGetPhysicalDeviceProperties2( gpu.device, &gpu.properties2 );
 		vkGetPhysicalDeviceMemoryProperties( gpu.device, &gpu.memProps );
 		vkGetPhysicalDeviceFeatures( gpu.device, &gpu.features );
 		{
@@ -736,7 +742,7 @@ void VulkanBackend::PickPhysicalDevice()
 
 			deviceFound = true;
 
-			if ( gpu.props.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU )
+			if ( gpu.properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU )
 			{
 				return;
 			}

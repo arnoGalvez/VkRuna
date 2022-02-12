@@ -1,9 +1,9 @@
 {
     "value0": {
         "m_capacity": 1000000,
-        "m_spawnRate": 100000.0,
-        "m_lifeMin": 7.0,
-        "m_lifeMax": 9.0,
+        "m_spawnRate": 999999999.0,
+        "m_lifeMin": 3.0,
+        "m_lifeMax": 3.0,
         "m_renderPrimitive": 0,
         "m_userAttributesCount": 2,
         "value0": {
@@ -227,7 +227,7 @@
                     }
                 }
             },
-            "state": 270712963105,
+            "state": 270712963654,
             "userVars": [
                 {
                     "type": 1,

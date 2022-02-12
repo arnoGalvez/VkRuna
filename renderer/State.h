@@ -149,8 +149,8 @@ enum pipelineState_t : uint64_t
 	STENCIL_MASK_BITS = 0xFFull << ( bsr( STENCIL_REF_BITS ) + 1 )
 };
 
-uint64_t StateSetSrcBlend( uint64_t state, pipelineState_t srcBlend );
-uint64_t StateSetDstBlend( uint64_t state, pipelineState_t dstBlend );
+uint64_t StateSetSrcBlendFactor( uint64_t state, pipelineState_t srcBlend );
+uint64_t StateSetDstBlendFactor( uint64_t state, pipelineState_t dstBlend );
 uint64_t StateSetBlendOp( uint64_t state, pipelineState_t blendOp );
 uint64_t StateSetCullMode( uint64_t state, pipelineState_t cullMode );
 uint64_t StateSetPolygonMode( uint64_t state, pipelineState_t polygonMode );

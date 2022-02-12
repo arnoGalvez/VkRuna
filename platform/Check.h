@@ -1,5 +1,7 @@
 #pragma once
 
+#include "platform/defines.h"
+
 #include <stdexcept>
 
 #define STRINGIFY_MACRO( x ) STRINGIFY( x )
@@ -10,6 +12,7 @@
 		bool predValue = pred;                                                                                     \
 		if ( !predValue )                                                                                          \
 		{                                                                                                          \
+			DEBUG_BREAK();                                                                                         \
 			throw std::runtime_error( __FILE__ " ( " STRINGIFY_MACRO( __LINE__ ) " ) failed predicate:\n" #pred ); \
 		}                                                                                                          \
 	}
@@ -19,6 +22,7 @@
 		bool predValue = pred;                                                                  \
 		if ( !predValue )                                                                       \
 		{                                                                                       \
+			DEBUG_BREAK();                                                                      \
 			throw std::runtime_error( __FILE__ " ( " STRINGIFY_MACRO( __LINE__ ) " ) : " msg ); \
 		}                                                                                       \
 	}

@@ -159,10 +159,11 @@ class VFX : public ISerializable
 	float	 m_lifeMax	 = 1.0f;
 
 	vfxRenderPrimitive_t m_renderPrimitive = VFX_RP_CUBE;
-	Buffer				 m_indexBuffer {}; // Could be shared by all VFX ?
+	Buffer				 m_indexBuffer {}; // Could be shared by all VFXs ?
 
 	Buffer m_revivalCounter {};
-	double m_reviveAcc = 0.0;
+	double m_reviveAcc		   = 0.0;
+	bool   m_infiniteSpawnRate = false;
 
 	int										   m_userAttributesCount = 0;
 	int										   m_attributesCount	 = 0;
@@ -205,8 +206,6 @@ class VFXManager
 	void		 MemsetZeroVFX( VFX &vfx );
 
    private:
-	pipelineProg_t *m_initPipeline = nullptr;
-
 	VFXContainer_t m_vfxContainer;
 
 	std::vector< gpuCmd_t >		m_preRenderCmds;

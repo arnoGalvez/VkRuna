@@ -94,6 +94,8 @@ void VulkanBlock::Init()
 	allocateInfo.allocationSize	 = m_size;
 	allocateInfo.memoryTypeIndex = m_memTypeIndex;
 
+	// cpu -> gpu
+	// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceMaintenance3Properties
 	VK_CHECK( vkAllocateMemory( vkContext.device, &allocateInfo, nullptr, &m_deviceMemory ) );
 
 	if ( IsHostVisible() )
@@ -395,7 +397,7 @@ void VulkanAllocator::Init()
 		}
 	}
 
-	m_bufferImageGranularity = gpu.props.limits.bufferImageGranularity;
+	m_bufferImageGranularity = gpu.properties.limits.bufferImageGranularity;
 }
 
 void VulkanAllocator::Shutdown()

@@ -170,8 +170,8 @@ void PipelineController::ExtractGPUVarViews( std::shared_ptr< render::pipelinePr
 		for ( const memberDeclaration_t &uniform : ib.declarations )
 		{
 			gpuVarView_t gpuVarView;
-			gpuVarView.name	= uniform.name;
-			gpuVarView.type	= uniform.type;
+			gpuVarView.name	 = uniform.name;
+			gpuVarView.type	 = uniform.type;
 			gpuVarView.value = reinterpret_cast< float * >( buffer );
 
 			m_gpuVarViews.emplace_back( gpuVarView );
@@ -356,6 +356,18 @@ double *VFXController::GetSpawnRatePtr()
 	if ( vfxPtr )
 	{
 		return &vfxPtr->m_spawnRate;
+	}
+
+	return nullptr;
+}
+
+bool *VFXController::GetInfiniteSpawnRatePtr()
+{
+	auto vfxPtr = m_vfx.lock();
+
+	if ( vfxPtr )
+	{
+		return &vfxPtr->m_infiniteSpawnRate;
 	}
 
 	return nullptr;

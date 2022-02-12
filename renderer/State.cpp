@@ -9,12 +9,12 @@ uint64_t StateHelper( uint64_t state, pipelineState_t option, pipelineState_t ma
 	return state;
 }
 
-uint64_t StateSetSrcBlend( uint64_t state, pipelineState_t srcBlend )
+uint64_t StateSetSrcBlendFactor( uint64_t state, pipelineState_t srcBlend )
 {
 	return StateHelper( state, srcBlend, SRCBLEND_FACTOR_MASK );
 }
 
-uint64_t StateSetDstBlend( uint64_t state, pipelineState_t dstBlend )
+uint64_t StateSetDstBlendFactor( uint64_t state, pipelineState_t dstBlend )
 {
 	return StateHelper( state, dstBlend, DSTBLEND_FACTOR_MASK );
 }

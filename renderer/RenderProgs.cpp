@@ -29,7 +29,7 @@ void shader_t::UpdateModule( const char *spvFile )
 {
 	std::vector< char > binary = ReadBinary< char >( spvFile );
 
-	CHECK_PRED( binary.size() != 0 && ( ( binary.size() % 4 ) == 0 ) )
+	CHECK_PRED( !binary.empty() && ( ( binary.size() % 4 ) == 0 ) )
 
 	DestroyModule();
 
@@ -158,7 +158,7 @@ bool FindInterfaceBlock( std::vector< interfaceBlock_t > &ibVec,
 						 ibFlags_t						  flags,
 						 interfaceBlock_t **			  out )
 {
-	const auto predSame = [&]( const interfaceBlock_t &ib ) { return ib.name == name && ib.type == type; };
+	const auto predSame = [ & ]( const interfaceBlock_t &ib ) { return ib.name == name && ib.type == type; };
 
 	auto it = std::find_if( ibVec.cbegin(), ibVec.cend(), predSame );
 	if ( it != ibVec.cend() )
@@ -200,7 +200,7 @@ std::vector< const interfaceBlock_t * > PipelineManager::GetUniqueSharedBlocks( 
 		int sharedInterfaceBlockIndex = -1;
 
 		{
-			const auto predSameBinding = [&]( const interfaceBlock_t &interfaceBlock ) {
+			const auto predSameBinding = [ & ]( const interfaceBlock_t &interfaceBlock ) {
 				return interfaceBlock.binding == ibb;
 			};
 
@@ -214,7 +214,7 @@ std::vector< const interfaceBlock_t * > PipelineManager::GetUniqueSharedBlocks( 
 		}
 
 		{
-			const auto predSameBinding = [&]( const interfaceBlock_t *interfaceBlock ) {
+			const auto predSameBinding = [ & ]( const interfaceBlock_t *interfaceBlock ) {
 				return interfaceBlock->binding == ibb;
 			};
 
@@ -381,7 +381,7 @@ VkDeviceSize UpdateUBO( const std::vector< interfaceBlock_t > &ibVec,
 						Buffer *							   ubo )
 {
 	const VkDeviceSize minUniformBufferOffsetAlignment =
-		GetVulkanContext().gpu.props.limits.minUniformBufferOffsetAlignment;
+		GetVulkanContext().gpu.properties.limits.minUniformBufferOffsetAlignment;
 
 	VkDeviceSize offset = 0;
 
@@ -739,7 +739,7 @@ void PipelineManager::UpdateImages( pipelineProg_t &		  pp,
 		{
 			const Image &image		= *( images[ i ] );
 			bool		 found		= false;
-			const auto	 ImageFound = [&]( const interfaceBlock_t &ib ) {
+			const auto	 ImageFound = [ & ]( const interfaceBlock_t &ib ) {
 				  return ib.type == BT_SAMPLER2D && ib.name == *( varNames[ i ] );
 			};
 			// auto       it            = std::find_if( pp.interfaceBlocks.cbegin(), pp.interfaceBlocks.cend(),
@@ -805,7 +805,7 @@ void PipelineManager::UpdateBuffers( pipelineProg_t &	  pp,
 		{
 			const Buffer &buffer			= *( buffers[ i ] );
 			bool		  found				= false;
-			const auto	  IsCorrespondingIB = [&]( const interfaceBlock_t &ib ) {
+			const auto	  IsCorrespondingIB = [ & ]( const interfaceBlock_t &ib ) {
 				   return ib.type == BT_BUFFER && ( std::strcmp( ib.name.c_str(), varNames[ i ] ) == 0 );
 			};
 
@@ -1080,7 +1080,7 @@ void PipelineManager::UpdateResourceBindings( pipelineProg_t &pp )
 
 			std::vector< VkDescriptorSetLayoutBinding > &dslbVec = dslbVecTable[ setId ];
 
-			const auto predSameBinding = [&]( const VkDescriptorSetLayoutBinding &elt ) {
+			const auto predSameBinding = [ & ]( const VkDescriptorSetLayoutBinding &elt ) {
 				return elt.binding == ib.binding;
 			};
 			if ( std::find_if( dslbVec.cbegin(), dslbVec.cend(), predSameBinding ) == dslbVec.cend() )
@@ -1102,7 +1102,7 @@ void PipelineManager::UpdateResourceBindings( pipelineProg_t &pp )
 
 			std::vector< VkDescriptorSetLayoutBinding > &dslbVec = dslbVecTable[ setId ];
 
-			const auto predSameBinding = [&]( const VkDescriptorSetLayoutBinding &elt ) {
+			const auto predSameBinding = [ & ]( const VkDescriptorSetLayoutBinding &elt ) {
 				return elt.binding == sibBinding;
 			};
 			if ( std::find_if( dslbVec.cbegin(), dslbVec.cend(), predSameBinding ) == dslbVec.cend() )
@@ -1206,7 +1206,7 @@ void PipelineManager::UpdateState( pipelineProg_t &pp, uint64_t state )
 byte *PipelineManager::GetUBOPtr( const pipelineProg_t &pp, int interfaceBlockIndex )
 {
 	const VkDeviceSize minUniformBufferOffsetAlignment =
-		GetVulkanContext().gpu.props.limits.minUniformBufferOffsetAlignment;
+		GetVulkanContext().gpu.properties.limits.minUniformBufferOffsetAlignment;
 
 	size_t offset = 0;
 
@@ -1623,7 +1623,7 @@ void PipelineManager::UpdateDescriptorSetUBO( pipelineProg_t &pp )
 	auto &device = GetVulkanContext().device;
 
 	const VkDeviceSize minUniformBufferOffsetAlignment =
-		GetVulkanContext().gpu.props.limits.minUniformBufferOffsetAlignment;
+		GetVulkanContext().gpu.properties.limits.minUniformBufferOffsetAlignment;
 
 	Buffer *uboPool = pp.uboPool;
 	if ( !uboPool )
@@ -1666,7 +1666,8 @@ void PipelineManager::UpdateDescriptorSetUBO( pipelineProg_t &pp )
 				ibByteSize += GetMemberTypeByteSize( uniform.type );
 			}
 
-			const VkDeviceSize offsetAlignment = GetVulkanContext().gpu.props.limits.minUniformBufferOffsetAlignment;
+			const VkDeviceSize offsetAlignment =
+				GetVulkanContext().gpu.properties.limits.minUniformBufferOffsetAlignment;
 			if ( offset % offsetAlignment )
 			{
 				FatalError(
@@ -1706,7 +1707,8 @@ void PipelineManager::UpdateDescriptorSetUBO( pipelineProg_t &pp )
 				ibByteSize += GetMemberTypeByteSize( uniform.type );
 			}
 
-			const VkDeviceSize offsetAlignment = GetVulkanContext().gpu.props.limits.minUniformBufferOffsetAlignment;
+			const VkDeviceSize offsetAlignment =
+				GetVulkanContext().gpu.properties.limits.minUniformBufferOffsetAlignment;
 			if ( offset % offsetAlignment )
 			{
 				FatalError(
@@ -1743,7 +1745,7 @@ void PipelineManager::UpdateDescriptorSetUBO( pipelineProg_t &pp )
 void PipelineManager::AllocUBOs( pipelineProg_t &pp )
 {
 	const VkDeviceSize minUniformBufferOffsetAlignment =
-		GetVulkanContext().gpu.props.limits.minUniformBufferOffsetAlignment;
+		GetVulkanContext().gpu.properties.limits.minUniformBufferOffsetAlignment;
 
 	FreeUBOs( pp );
 

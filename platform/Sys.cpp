@@ -162,6 +162,8 @@ void Error( const char *fmt... )
 
 void FatalError( const char *fmt... )
 {
+	DEBUG_BREAK();
+
 	va_list argptr;
 
 	va_start( argptr, fmt );

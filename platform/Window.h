@@ -55,6 +55,7 @@ class Window
 	const winProps_t &GetProps() const { return m_props; }
 
 	double GetFrameDeltaTime() { return m_frameDeltaTime; }
+	double GetTimeSeconds() { return m_elapsedTime; }
 
 	void OnFatalError();
 

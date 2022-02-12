@@ -19,7 +19,7 @@ vec4 VertexMain(Particle_t particle)
 	vec4 screenPosition = globals.p * globals.v * worldPosition;
 
 	color.rgb =  mix( colorEnd.rgb, colorBeg.rgb, Warp( GetLife() * (1.0 / GetLifeMax()), warpT.x ) );
-	color.a = 1.0;	
+	color.a = 0.5;	
 
 	return screenPosition;
 }

@@ -43,7 +43,6 @@ Window::~Window()
 
 bool Window::Init( const winProps_t &windowInputParameters )
 {
-
 	sys::Init();
 	InitTimeCounters();
 
@@ -255,6 +254,7 @@ void Window::UpdateTimeCounters()
 	m_elapsedTime	= double( sys::GetClockTicks() ) / double( sys::ClockTicksFrequency() );
 
 	m_frameDeltaTime = m_elapsedTime - m_lastFrameTime;
+	m_frameDeltaTime *= 0.2;
 }
 
 void Window::KillWindow()

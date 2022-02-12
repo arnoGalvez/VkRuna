@@ -14,14 +14,14 @@ namespace vkRuna
 {
 using namespace sys;
 
-static bool FileExplorerButton( const char *		  buttonName,
-						 const char *		  openPath,
-						 const char *		  explorerKey,
-						 const char *		  explorerDescription,
-						 const char *		  extensionFilter,
-						 int				  maxSelections,
-						 ImGuiFileDialogFlags flags,
-						 std::string &		  path )
+static bool FileExplorerButton( const char *		 buttonName,
+								const char *		 openPath,
+								const char *		 explorerKey,
+								const char *		 explorerDescription,
+								const char *		 extensionFilter,
+								int					 maxSelections,
+								ImGuiFileDialogFlags flags,
+								std::string &		 path )
 {
 	bool hasOutput = false;
 	if ( ImGui::Button( buttonName ) )
@@ -51,8 +51,8 @@ static bool FileExplorerButton( const char *		  buttonName,
 		// action if OK
 		if ( ImGuiFileDialog::Instance()->IsOk() )
 		{
-			//static std::string exeDir = ExtractDirPath( GetExePath() );
-			//path = ToRelativePath( exeDir, ImGuiFileDialog::Instance()->GetFilePathName() );
+			// static std::string exeDir = ExtractDirPath( GetExePath() );
+			// path = ToRelativePath( exeDir, ImGuiFileDialog::Instance()->GetFilePathName() );
 
 			path = ImGuiFileDialog::Instance()->GetFilePathName();
 
@@ -132,7 +132,7 @@ void VFXUI::Draw()
 
 	auto SeparateUIBlocksNoPadding = []() { ImGui::Separator(); };
 
-	auto SeparateUIBlocks = [&]() {
+	auto SeparateUIBlocks = [ & ]() {
 		ImGui::SetCursorPosY( ImGui::GetCursorPosY() + 0.5f * ImGui::GetTextLineHeight() );
 		SeparateUIBlocksNoPadding();
 		ImGui::SetCursorPosY( ImGui::GetCursorPosY() + 0.5f * ImGui::GetTextLineHeight() );
@@ -289,6 +289,18 @@ void VFXUI::Draw()
 									   &max,
 									   "%.3f",
 									   ImGuiSliderFlags_AlwaysClamp );
+				}
+
+				bool *infiniteSpawnRate = vfxCtrl.GetInfiniteSpawnRatePtr();
+				if ( infiniteSpawnRate )
+				{
+					ImGui::TableNextRow();
+
+					ImGui::TableNextColumn();
+					ImGui::TextUnformatted( "Infinite Spawn Rate" );
+
+					ImGui::TableNextColumn();
+					ImGui::Checkbox( "##Infinite Spawn Rate", infiniteSpawnRate );
 				}
 
 				ImGui::EndTable();

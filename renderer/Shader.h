@@ -12,7 +12,7 @@ namespace vkRuna
 {
 enum ibFlags_t : uint16_t
 {
-	IBF_NONE	= 0,
+	IBF_NONE   = 0,
 	IBF_HIDDEN = 1u << 0
 };
 

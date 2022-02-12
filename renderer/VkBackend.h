@@ -19,16 +19,18 @@ struct GPUInfo_t
 {
 	VkPhysicalDevice device = VK_NULL_HANDLE;
 
-	VkPhysicalDeviceProperties			 props;
-	VkPhysicalDeviceMemoryProperties	 memProps;
-	VkPhysicalDeviceFeatures			 features;
-	std::vector< VkExtensionProperties > extensionsProps;
+	VkPhysicalDeviceProperties			   properties {};
+	VkPhysicalDeviceProperties2			   properties2 {};
+	VkPhysicalDeviceMaintenance3Properties properties3 {};
+	VkPhysicalDeviceMemoryProperties	   memProps {};
+	VkPhysicalDeviceFeatures			   features {};
+	std::vector< VkExtensionProperties >   extensionsProps {};
 
-	VkSurfaceCapabilitiesKHR		  surfaceCaps;
-	std::vector< VkSurfaceFormatKHR > surfaceFormats;
-	std::vector< VkPresentModeKHR >	  presentModes;
+	VkSurfaceCapabilitiesKHR		  surfaceCaps {};
+	std::vector< VkSurfaceFormatKHR > surfaceFormats {};
+	std::vector< VkPresentModeKHR >	  presentModes {};
 
-	std::vector< VkQueueFamilyProperties > queueFamiliesProps;
+	std::vector< VkQueueFamilyProperties > queueFamiliesProps {};
 };
 
 struct vulkanContext_t

@@ -21,6 +21,7 @@ const char *ErrorToString( VkResult result );
 		VkResult result = x;                                                                               \
 		if ( result != VK_SUCCESS )                                                                        \
 		{                                                                                                  \
+			DEBUG_BREAK();                                                                                 \
 			throw std::runtime_error(                                                                      \
 				std::string( __FILE__ " ( " STRINGIFY_MACRO( __LINE__ ) " ):\n Vulkan error message: " ) + \
 				std::string( vkRuna::render::ErrorToString( result ) ) );                                  \
@@ -33,6 +34,7 @@ const char *ErrorToString( VkResult result );
 		bool	 predValue = pred;                                                                     \
 		if ( ( result != VK_SUCCESS ) || !predValue )                                                  \
 		{                                                                                              \
+			DEBUG_BREAK();                                                                             \
 			if ( result != VK_SUCCESS )                                                                \
 				throw std::runtime_error( std::string( __FILE__ " ( " ) + std::to_string( __LINE__ ) + \
 										  std::string( " ):\n Vulkan error message: " ) +              \

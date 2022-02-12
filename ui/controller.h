@@ -139,6 +139,7 @@ class VFXController
 	std::vector< vfxBufferView_t > &GetBuffers() { return m_attributeBufferViews; }
 	const char *					GetName() const;
 	double *						GetSpawnRatePtr();
+	bool *							GetInfiniteSpawnRatePtr();
 	uint32_t *						GetCapacityPtr() { return &m_capacity; }
 	float *							GetLifeMinPtr() { return &m_lifeMin; }
 	float *							GetLifeMaxPtr() { return &m_lifeMax; }

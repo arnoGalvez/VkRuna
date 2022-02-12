@@ -2,7 +2,8 @@
 
 #pragma once
 
-#define NO_DISCARD [[nodiscard]]
+#define NO_DISCARD	  [[nodiscard]]
+#define DEBUG_BREAK() __debugbreak()
 
 #define SWITCH_CASE_STRING( x ) \
 	case x:                     \

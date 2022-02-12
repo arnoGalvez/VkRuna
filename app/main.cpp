@@ -34,8 +34,6 @@ int CALLBACK wWinMain( _In_ HINSTANCE	  hInstance,
 			return 1;
 		}
 
-		
-
 		while ( window.Frame() )
 			;
 

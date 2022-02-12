@@ -265,16 +265,26 @@ void VFX::Update( double deltaFrame )
 		return;
 	}
 
-	m_reviveAcc += deltaFrame * m_spawnRate;
+	if ( !m_infiniteSpawnRate )
+	{
+		m_reviveAcc += deltaFrame * m_spawnRate;
 
-	const int reviveCounterLeftovers = std::max< int >( 0, *( static_cast< int * >( m_revivalCounter.GetPointer() ) ) );
-	const double toRevive			 = trunc( m_reviveAcc );
+		const int reviveCounterLeftovers =
+			std::max< int >( 0, *( static_cast< int * >( m_revivalCounter.GetPointer() ) ) );
+		const double toRevive = trunc( m_reviveAcc );
 
-	int n = reviveCounterLeftovers + static_cast< int >( toRevive );
-	n *= deltaFrame != 0; // #TODO WTF ???
-	m_revivalCounter.Update( sizeof( n ), &n );
+		int n = reviveCounterLeftovers + static_cast< int >( toRevive );
+		n *= deltaFrame != 0; // #TODO WTF ???
+		// n = m_capacity;
+		m_revivalCounter.Update( sizeof( n ), &n );
 
-	m_reviveAcc -= toRevive;
+		m_reviveAcc -= toRevive;
+	}
+	else
+	{
+		const int n = static_cast< int >( m_capacity );
+		m_revivalCounter.Update( sizeof( n ), &n );
+	}
 }
 
 bool VFX::LoadFromJSON( const char *path )
@@ -696,14 +706,16 @@ void VFX::SetRenderPrimitive( vfxRenderPrimitive_t renderPrimitive )
 	uint64_t state = m_graphicsPipeline->stateBits;
 	if ( m_renderPrimitive == VFX_RP_QUAD )
 	{
-		state = StateSetDstBlend( state, DSTBLEND_FACTOR_ONE );
+		state = StateSetSrcBlendFactor( state, SRCBLEND_FACTOR_ONE );
+		state = StateSetDstBlendFactor( state, DSTBLEND_FACTOR_ONE );
+		state = StateSetBlendOp( state, BLEND_OP_ADD );
 		state = StateSetDepthTest( state, false );
 		state = StateSetDepthWrite( state, false );
 		state = StateSetCullMode( state, CULL_MODE_NONE );
 	}
 	else
 	{
-		state = StateSetDstBlend( state, DSTBLEND_FACTOR_ZERO );
+		state = StateSetDstBlendFactor( state, DSTBLEND_FACTOR_ZERO );
 		state = StateSetDepthTest( state, true );
 		state = StateSetDepthWrite( state, false );
 		state = StateSetDepthOp( state, DEPTH_COMPARE_OP_EQUAL );
@@ -826,16 +838,10 @@ VFXManager::~VFXManager()
 
 VFXManager::VFXManager() {}
 
-void VFXManager::Init()
-{
-	m_initPipeline = new pipelineProg_t();
-}
+void VFXManager::Init() {}
 
 void VFXManager::Shutdown()
 {
-	delete m_initPipeline;
-	m_initPipeline = nullptr;
-
 	m_vfxContainer.clear();
 	m_preRenderCmds.clear();
 	m_barriers.clear();

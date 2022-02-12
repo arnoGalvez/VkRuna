@@ -19,6 +19,6 @@ void Init(inout Particle_t particle)
 
 void Update(inout Particle_t updatedParticle)
 {	
-	updatedParticle.velocity = velocityScale.xyz * CurlNoise(updatedParticle.position, 6, noiseAmplFreqPersLac.y, noiseAmplFreqPersLac.z, noiseAmplFreqPersLac.w);
+	updatedParticle.velocity = (GetLife() / GetLifeMax()) * velocityScale.xyz * CurlNoise(updatedParticle.position, 6, noiseAmplFreqPersLac.y, noiseAmplFreqPersLac.z, noiseAmplFreqPersLac.w);
 	updatedParticle.position = updatedParticle.position + GetDeltaFrame() * updatedParticle.velocity;
 }

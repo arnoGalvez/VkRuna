@@ -28,9 +28,10 @@ struct drawSurf_t
 	uint64_t vertexBufferOffset = 0;	   // byte offset
 	Buffer * indexBuffer		= nullptr; // uint16
 	uint64_t indexBufferOffset	= 0;	   // byte offset
-	//uint64_t transformHandle	= 0;
-	uint32_t instanceCount		= 0;
-	union {
+	// uint64_t transformHandle	= 0;
+	uint32_t instanceCount = 0;
+	union
+	{
 		uint32_t vertexCount = 0;
 		uint32_t indexCount;
 	};

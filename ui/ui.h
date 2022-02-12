@@ -70,7 +70,7 @@ class UIManager
 	void AddWidget( UIElement *widget );
 	bool RemoveWidget( UIElement *widget );
 
-	bool IsAnyItemActive();                                            
+	bool IsAnyItemActive();
 
    private:
 	void Clear();

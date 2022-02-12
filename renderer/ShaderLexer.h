@@ -51,10 +51,10 @@ class ShaderLexer
 	void Shutdown();
 
 	NO_DISCARD bool Parse( std::string &									  shaderCode,
-								   size_t											  tokenizersCount,
-								   std::unique_ptr< ShaderTokenizer > *				  tokenizers,
-								   std::vector< std::unique_ptr< ShaderTokenizer > > &out,
-								   bool errorOnExpressionNotFound = false );
+						   size_t											  tokenizersCount,
+						   std::unique_ptr< ShaderTokenizer > *				  tokenizers,
+						   std::vector< std::unique_ptr< ShaderTokenizer > > &out,
+						   bool												  errorOnExpressionNotFound = false );
 	// NO_DISCARD bool ParseAllExpr( std::string &shaderCode, std::vector< std::unique_ptr< ShaderTokenizer > > &out );
 	void Combine( const std::vector< std::unique_ptr< ShaderTokenizer > > &tokenizers, std::string &out );
 };
@@ -126,7 +126,7 @@ class GlobalsTokenizer : public ShaderTokenizer
    private:
 	static std::regex		scanRegex;
 	static interfaceBlock_t ib;
-	static const char * FUNCTIONS_PATH;
+	static const char *		FUNCTIONS_PATH;
 };
 
 class ComputeShaderOptsTokenizer : public ShaderTokenizer
